@@ -1,0 +1,160 @@
+/* NestMatch: real-estate theme layer.
+   Loaded after styles.css. Only colours, type, corners and shadows change here;
+   layout and sizing stay in styles.css (deck heights are tuned for 320x568). */
+
+@import url("https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600;700;800&display=swap");
+
+:root {
+  /* brand */
+  --brand: #1F3D35;        /* deep evergreen: primary actions, active states */
+  --brand-2: #2C5247;      /* hover */
+  --brass: #A98552;        /* warm accent: used sparingly */
+  --brass-soft: #F4ECDF;
+  --brass-ink: #85663A;     /* brass for text on light backgrounds (AA 4.8:1) */
+  --brass-deep: #7D5F34;    /* brass behind white text (AA 5.9:1) */
+
+  /* neutrals: warm, paper-like */
+  --ink: #1B2421;
+  --ink-2: #3E4A46;
+  --muted: #5E6864;        /* 5.3:1 on page, 5.1:1 on soft */
+  --line: #E5DFD4;
+  --soft: #F4F0E8;
+  --bg: #FFFEFB;
+  --page: #F8F5EF;
+
+  /* meanings (kept distinct from the brand) */
+  --accent: #C2483D;       /* pass / warnings */
+  --accent-soft: #FBEAE7;
+  --love: #E2A40C;         /* love / super-like */
+  --ok: #2E8653;           /* like / good */
+  --ok-soft: #E5F2EA;
+  --pa: #3A5F9E;           /* partner A: slate blue */
+  --pb: #8A4F7D;           /* partner B: plum */
+
+  --serif: "Fraunces", "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, serif;
+  --radius: 14px;
+  --shadow: 0 1px 2px rgba(27, 36, 33, .05), 0 6px 20px rgba(27, 36, 33, .07);
+  --shadow-lg: 0 24px 60px rgba(27, 36, 33, .20);
+}
+
+body { background: var(--page); }
+.main { background: var(--page); }
+.onboard { background: var(--page); }
+.onboard .main { background: var(--bg); }
+
+/* ---------- type ---------- */
+h1, h2, .page-head h1, .setup h1 {
+  font-family: var(--serif); font-weight: 600; letter-spacing: -.015em;
+  font-variation-settings: "opsz" 72;
+}
+h3 { font-weight: 650; letter-spacing: -.01em; }
+.setup h1 em { color: var(--brand); font-style: italic; }
+.brand { font-family: var(--serif); font-weight: 600; letter-spacing: -.01em; }
+.brand .mark rect { fill: var(--brand); }
+.brand .mark path:last-child { fill: var(--brass); }
+
+.price, .d-price, .mprice, .vprice, .pay-total b, .ring b, .match-title, .w-stats b {
+  font-family: var(--serif); font-weight: 600; letter-spacing: -.01em;
+  font-variant-numeric: lining-nums tabular-nums;
+}
+.price .est, .mprice span, .d-price .was { font-family: "Inter", -apple-system, sans-serif; }
+.eyebrow, .sec-title, .c-label {
+  letter-spacing: .1em; text-transform: uppercase; font-size: 11.5px; font-weight: 700;
+}
+.eyebrow { color: var(--brass-ink); }
+.persona .eyebrow { color: #D9BD8C; }   /* 6.5:1 on evergreen */
+.persona.locked .eyebrow { color: var(--muted); }
+.sec-title { color: var(--ink-2); }
+.sec-title span { text-transform: none; letter-spacing: 0; }
+.lede, .d-sec p { color: var(--ink-2); }
+
+/* ---------- buttons & controls ---------- */
+.btn { border-radius: 10px; font-weight: 600; letter-spacing: .005em; }
+.btn.small { border-radius: 8px; }
+.btn.primary { background: var(--brand); }
+.btn.primary:hover { background: var(--brand-2); }
+.btn.ghost { background: var(--bg); border-color: var(--line); }
+.btn.ghost:hover, .icon-btn:hover, .step:hover, .side .nav-item:hover, .side-link:hover { background: var(--soft); }
+.icon-btn { border-radius: 10px; }
+.link { color: var(--brand); }
+.link.danger { color: var(--accent); }
+
+.seg button, .pick { border-radius: 8px; }
+.seg button.on, .pick.on, .cmp-check input:checked + span { background: var(--brand); border-color: var(--brand); }
+.steps i.on, .progress-line i, .dots i, .how b { background: var(--brand); }
+.dots i.gone { background: var(--line); }
+.field input { border-radius: 10px; }
+.field input:focus { outline-color: var(--brand); }
+.toggle input { accent-color: var(--brand); }
+.dual input::-webkit-slider-thumb { border-color: var(--brand); }
+.dual input::-moz-range-thumb { border-color: var(--brand); }
+.consent { border-radius: 10px; background: var(--brass-soft); }
+.poolcount { border-radius: 10px; }
+
+/* ---------- navigation ---------- */
+.tabs { background: rgba(255, 254, 251, .96); backdrop-filter: saturate(1.2) blur(8px); }
+.nav-item.on { color: var(--brand); }
+.side { background: var(--bg); }
+.side .nav-item.on { background: var(--soft); color: var(--brand); box-shadow: inset 3px 0 0 var(--brass); border-radius: 8px; }
+.side .nav-item { border-radius: 8px; }
+.badge { background: var(--brand); }
+.who { border-color: var(--line); background: var(--bg); }
+
+/* ---------- listing card ---------- */
+.card { border-color: var(--line); box-shadow: var(--shadow); }
+.photo-fade { background: linear-gradient(transparent, rgba(12, 22, 19, .72)); }
+.photo-text .price { text-shadow: 0 1px 2px rgba(0, 0, 0, .25); }
+.badge-pill { border-radius: 6px; font-weight: 650; letter-spacing: .01em; }
+.badge-pill.new { background: var(--brand); color: #fff; }
+.badge-pill.love { color: #9A6B00; }
+.stamp { border-width: 2.5px; border-radius: 8px; font-family: "Inter", sans-serif; font-weight: 800; letter-spacing: .14em; }
+.stamp.love { color: #9A6B00; }
+.chip { border-radius: 6px; }
+.facts-row b { font-weight: 700; }
+.whynot button { border-radius: 6px; }
+
+.round { border-color: var(--line); background: var(--bg); }
+
+/* ---------- details ---------- */
+.d-sec { border-color: var(--line); }
+.kv { border-bottom-style: solid; border-color: #EFEAE1; }
+.flood.moderate { color: #9A6B00; }
+.c1 { background: var(--brand); }
+.map { border-radius: 10px; }
+.map-pin { background: var(--brand); }
+.map-pin.match { background: var(--brass-deep); }
+.map-pin.almost { background: #5E6864; }
+
+/* ---------- pages ---------- */
+.mcard { border-radius: 12px; border-color: var(--line); }
+.mcard.selected { outline-color: var(--brand); }
+.row-item, .compare, .insight, .score-card, .how > div, .talk, .step, .empty, .empty-card, .winner { border-radius: 12px; border-color: var(--line); }
+.thumb, .c-home img, .tour-homes img { border-radius: 8px; }
+.vcard { border-radius: 12px; }
+.vcard:hover { border-color: var(--brand); }
+.insight.differ h3 .ic { color: var(--brass); }
+.w-stats > div { border-radius: 8px; }
+.w-badge { border-radius: 8px; }
+.w-badge .ic { color: var(--brass); }
+.step > .ic:first-child { border-radius: 8px; background: var(--brass-soft); color: var(--brand); }
+.value .ic { border-radius: 8px; background: var(--brass-soft); color: var(--brand); }
+.handoff-note { border-radius: 8px; }
+
+/* ---------- overlay ---------- */
+#overlay { background: rgba(20, 30, 27, .5); }
+.sheet { border-radius: 18px 18px 0 0; background: var(--bg); }
+.sheet.center { border-radius: 16px; }
+@media (min-width: 700px) { .sheet { border-radius: 16px; } }
+.tabs-inline { border-radius: 10px; }
+.tabs-inline button { border-radius: 7px; }
+.source-card { border-radius: 10px; }
+.match-photo img { border-radius: 16px 16px 0 0; }
+.match-title { color: var(--brand); font-size: 34px; font-style: italic; }
+.match-avatars .mh { color: var(--brass); fill: var(--brass); }
+@media (min-width: 600px) {
+  .onboard .main { border-radius: 18px; }
+  .collage { border-radius: 18px 18px 0 0; }
+}
+
+#toast { background: var(--brand); border-radius: 10px; }
+#toast button { color: var(--brand); border-radius: 7px; }
